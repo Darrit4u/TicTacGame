@@ -27,12 +27,10 @@ class TicTacGame:
         if 1 <= row <= 3 and 1 <= col <= 3:
             if self._board[row-1][col-1] == 0:
                 return True
-            else:
-                print("This place is busy, choose another one\n")
-                return False
-        else:
-            print("Number is out of bound!\nTry again")
+            print("This place is busy, choose another one\n")
             return False
+        print("Number is out of bound!\nTry again")
+        return False
 
     def check_win(self) -> bool:
         win_combo = [self.cur_sign for _ in range(3)]
@@ -72,28 +70,30 @@ class TicTacGame:
             self.user_turn()
 
     @wrapper_turn
-    def comp_turn(self, sign):
+    def comp_turn(self):
         pass
 
     def next_player(self):
         self.cur_sign = 2 if self.cur_sign == 1 else 1
 
     def mode_you_you(self):
-        print("Nice! Next you need to enter your turn \nas two numbers from 1 to 3 in order 'row column'")
+        print("Nice! Next you need to enter your turn\n"
+              "as two numbers from 1 to 3 in order 'row column'")
         while not self._has_winner:
             self.user_turn()
             self.next_player()
         print("\nEnd of game. Goodbye!\nHave a good day!")
 
+    # ToDo: придумать как красиво сделать
     def mode_you_computer(self):
         while True:
-            self.user_turn(1)
-            self.comp_turn(2)
+            self.user_turn()
+            self.comp_turn()
 
     def mode_comp_comp(self):
         while True:
-            self.comp_turn(1)
-            self.comp_turn(2)
+            self.comp_turn()
+            self.next_player()
 
     def start_game(self):
         hello_text = ("Hello! It's a tic tac game!\nChoose the mode what you want to play\n"
