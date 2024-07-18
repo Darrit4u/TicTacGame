@@ -1,11 +1,3 @@
-"""
-1. кто играет
-2. размер поля
-3. кто первый ходит
-4. ход оппонента
-"""
-
-
 class TicTacGame:
     def __init__(self):
         self._board = [[0 for _ in range(3)] for i in range(3)]
