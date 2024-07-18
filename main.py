@@ -4,7 +4,7 @@ class TicTacGame:
         self._board = [[0 for _ in range(3)] for i in range(3)]
         self.cur_sign = int
         self._has_winner = bool
-        self.tic_tac = {0: ' ', 1: 'x', 2: 'o'}
+        self.tic_tac = {0: " ", 1: "x", 2: "o"}
 
     def show_board(self):
         """
@@ -14,10 +14,12 @@ class TicTacGame:
         print("\nCurrent board:")
         print("  1 2 3")
         for num, i in enumerate(self._board):
-            print(f"{num+1} "
-                  f"{self.tic_tac[i[0]]} "
-                  f"{self.tic_tac[i[1]]} "
-                  f"{self.tic_tac[i[2]]}")
+            print(
+                f"{num+1} "
+                f"{self.tic_tac[i[0]]} "
+                f"{self.tic_tac[i[1]]} "
+                f"{self.tic_tac[i[2]]}"
+            )
 
     def validate_input(self, user_string: str) -> bool:
         """Checks whether user input matches the move rules"""
@@ -63,7 +65,9 @@ class TicTacGame:
             func(*args, **kwards)
             if self.check_win():
                 self._has_winner = True
-                print(f"\nHey! We have a winner!!!\nPlayer {self.cur_sign}, congratulations!!!")
+                print(
+                    f"\nHey! We have a winner!!!\nPlayer {self.cur_sign}, congratulations!!!"
+                )
 
         return wrapper
 
@@ -89,8 +93,10 @@ class TicTacGame:
 
     def mode_you_you(self):
         """Set up a user vs user game"""
-        print("Nice! Next you need to enter your turn\n"
-              "as two numbers from 1 to 3 in order 'row column'")
+        print(
+            "Nice! Next you need to enter your turn\n"
+            "as two numbers from 1 to 3 in order 'row column'"
+        )
         while not self._has_winner:
             self.user_turn()
             self.next_player()
@@ -111,11 +117,13 @@ class TicTacGame:
 
     def start_game(self):
         """Set up starting values and give a choice of mode of game"""
-        hello_text = ("Hello! It's a tic tac game!\nChoose the mode what you want to play\n"
-                      "1. You against computer\n"
-                      "2. You against your friend\n"
-                      "3. Computer against computer\n"
-                      "Enter a number of mode: ")
+        hello_text = (
+            "Hello! It's a tic tac game!\nChoose the mode what you want to play\n"
+            "1. You against computer\n"
+            "2. You against your friend\n"
+            "3. Computer against computer\n"
+            "Enter a number of mode: "
+        )
         mode_game = input(hello_text)
         self._has_winner = False
         self.cur_sign = 1
